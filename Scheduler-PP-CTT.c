@@ -103,3 +103,28 @@ struct Process_struct *  deQueue()
      }
      return temp;
 }
+
+void maintain_queue()
+{
+int count=0;
+           for(int i=0;i<n;i++)
+	   {
+                   
+		   if(process_list[i].state == NEW && now>=process_list[i].at)
+		   {      
+			   
+			   enqueue(&process_list[i]);
+			   process_list[i].state=READY;
+			   
+                    }
+                  if(process_list[i].state==EXIT)
+                  {
+                    count++;
+			}
+	   }
+	   if(count==n)
+	   {
+		  EVERYTHING_EXITED=1; 
+		  
+	   }
+}
