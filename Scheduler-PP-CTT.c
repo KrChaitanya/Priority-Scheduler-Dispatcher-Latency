@@ -88,3 +88,18 @@ void enqueue(struct Process_struct *p)
 		}
 	}
 }
+struct Process_struct *  deQueue()
+{
+     if(Ready_Queue->front==NULL)
+     {
+	     return NULL;
+     }
+     struct Process_struct * temp=Ready_Queue->front;
+     Ready_Queue->front=Ready_Queue->front->next;
+     temp->next=NULL;
+     if(Ready_Queue->front==NULL)
+     {
+	     Ready_Queue->rear=NULL;
+     }
+     return temp;
+}
